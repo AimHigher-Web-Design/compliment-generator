@@ -49,7 +49,7 @@ export class Home extends Component {
 
 		const options = {
 			strings: [words],
-			typeSpeed: 80,
+			typeSpeed: 50,
 			backspeed: 80,
 			fadeOut: true,
 			showCursor: false,

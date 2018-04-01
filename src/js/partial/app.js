@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Helmet from 'react-helmet';
 
 //Resources
-import '../../scss/content.scss';
+import '../../scss/partial/content.scss';
 import favicons from '../../img/favicons/*';
 
 //Components
