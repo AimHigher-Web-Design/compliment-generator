@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
+import ReactDOM from 'react-dom';
+import Typed from 'typed.js';
 
 //Resources
 // import '../../scss/layouts/home.scss';
@@ -42,12 +44,41 @@ export class Home extends Component {
 		return (adjective);
 	}
 
+	componentDidMount() {
+		let words = this.generateNum();
+
+		const options = {
+			strings: [words],
+			typeSpeed: 80,
+			backspeed: 80,
+			fadeOut: true,
+			showCursor: false,
+			// loop: true
+		};
+
+		this.typed = new Typed(this.el, options);			
+	};
+
+	newWord(adjective) {
+		let words = adjective;
+
+		const options = {
+			strings: [words],
+			typeSpeed: 80,
+			backspeed: 80,
+			fadeOut: true,
+			showCursor: false,
+			// loop: true
+		};
+
+		this.typed = new Typed(this.el, options);
+	}
+
 	render() {
-
-
 		return (
 			<div className="content main">
-				<h1>I think you're {this.generateNum()}</h1>
+				<h1>I think you're <span ref={(el) => {this.el = el;}} id="adjective"></span></h1>
+				<button onClick={() => this.newWord(this.generateNum())}>Not quite right? Try a different word!</button>
 			</div>
 		);
 	}
