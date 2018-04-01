@@ -3,9 +3,7 @@ import { Helmet } from 'react-helmet';
 
 //Resources
 // import '../../scss/layouts/home.scss';
-import Profile from '../../img/profile_david.jpeg';
-import CourtSupreme from '../../img/court_supreme.jpg';
-import CourtDistrict from '../../img/court_district.jpg';
+import Adjectives from '../data/adjectives.js';
 
 class Meta extends Component {
 	render() {
@@ -36,10 +34,20 @@ class Meta extends Component {
 }
 
 export class Home extends Component {
+	generateNum() {
+		let sumWords = Adjectives.length;
+		let word = Math.floor(Math.random() * Math.floor(sumWords));
+		let adjective = Adjectives[word];
+
+		return (adjective);
+	}
+
 	render() {
+
+
 		return (
 			<div className="content main">
-				<h1>Hello World</h1>
+				<h1>I think you're {this.generateNum()}</h1>
 			</div>
 		);
 	}

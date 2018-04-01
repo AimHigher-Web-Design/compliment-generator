@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
 //Import components
-import { Header } from './js/partial/header.js';
 import { App } from './js/partial/app.js';
 
 //Resources
