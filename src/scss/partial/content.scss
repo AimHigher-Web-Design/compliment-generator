@@ -2,8 +2,9 @@
 
 body {
     --colour: #{$purple};
+    --background: #{$cream};
 
-    background: $cream;
+    background: var(--background);
     color: $grey;
     font: $font_regular;
       font-size: 1.2em;
@@ -71,6 +72,11 @@ img {
     line-height: 0.8;
     overflow: visible;
     padding: 5px 30px;
+    text-shadow:
+        2px 2px var(--background),
+        2px -2px var(--background),
+        -2px 2px var(--background),
+        -2px -2px var(--background);
     min-width: 600px;
 }
 
