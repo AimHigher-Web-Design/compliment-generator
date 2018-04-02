@@ -11,7 +11,7 @@ class Main extends React.Component {
 	render() {
 		return (
 			<Fragment>
-				<div id="main">{<App />}</div>
+				<div id="main" className="content main">{<App />}</div>
 			</Fragment>
 		);
 	}

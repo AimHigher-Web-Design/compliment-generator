@@ -3,7 +3,7 @@
 body {
     --colour: #{$purple};
 
-    background: rgba($blue, 0.8);
+    background: $cream;
     color: $grey;
     font: $font_regular;
       font-size: 1.2em;
@@ -29,8 +29,8 @@ a {
 }
 
 button, .btn {
-    background: #fff;
-    border: 2px solid var(--colour);
+    background: transparent;
+    border: 3px solid var(--colour);
     color: $grey;
     cursor: pointer;
     display: inline-block;
@@ -39,10 +39,36 @@ button, .btn {
 
     &:active, &:hover, &:focus {
         background: var(--colour);
-        color: #fff;
+        color: $grey;
     }
 }
 
 img {
     max-width: 100%;
+}
+
+.content {
+    &.main {
+        display: grid;
+            align-items: center;
+            justify-items: center;
+            grid-template-rows: 2fr 1fr;
+        height: 100vh;
+        margin: 0 auto;
+        padding: 50px;
+        max-width: 1500px;
+
+        h1 {
+            justify-self: flex-start;
+        }
+    }
+}
+
+#adjective {
+    border-bottom: 4px solid rgba($grey, 0.4);
+    display: inline-block;
+    line-height: 0.8;
+    overflow: visible;
+    padding: 5px 30px;
+    min-width: 600px;
 }

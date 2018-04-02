@@ -76,10 +76,10 @@ export class Home extends Component {
 
 	render() {
 		return (
-			<div className="content main">
+			<Fragment>
 				<h1>I think you're <span ref={(el) => {this.el = el;}} id="adjective"></span></h1>
 				<button onClick={() => this.newWord(this.generateNum())}>Not quite right? Try a different word!</button>
-			</div>
+			</Fragment>
 		);
 	}
 }
