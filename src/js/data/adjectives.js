@@ -215,6 +215,7 @@ const Adjectives = [
     'Tasteful',
     'Teacherly',
     'Thorough',
+    'Thoughtful',
     'Tidy',
     'Tolerant',
 //     'Tractable',
