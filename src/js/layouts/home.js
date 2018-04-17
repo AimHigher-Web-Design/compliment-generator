@@ -78,7 +78,7 @@ export class Home extends Component {
 		return (
 			<Fragment>
 				<h1>I think you're <span ref={(el) => {this.el = el;}} id="adjective"></span></h1>
-				<button onClick={() => this.newWord(this.generateNum())}>{<RefreshCcw />}</button>
+				<button className="refresh" onClick={() => this.newWord(this.generateNum())}>{<RefreshCcw />}</button>
 				<About />
 			</Fragment>
 		);
