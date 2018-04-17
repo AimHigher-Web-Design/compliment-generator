@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Typed from 'typed.js';
 
 //Resources
-import {Info, Twitter, Globe, X} from 'react-feather';
+import {Info, Twitter, Globe, X, RefreshCcw} from 'react-feather';
 import Adjectives from '../data/adjectives.js';
 
 class Meta extends Component {
@@ -78,7 +78,7 @@ export class Home extends Component {
 		return (
 			<Fragment>
 				<h1>I think you're <span ref={(el) => {this.el = el;}} id="adjective"></span></h1>
-				<button onClick={() => this.newWord(this.generateNum())}>Not quite right? Try a different word!</button>
+				<button onClick={() => this.newWord(this.generateNum())}>{<RefreshCcw />}</button>
 				<About />
 			</Fragment>
 		);
