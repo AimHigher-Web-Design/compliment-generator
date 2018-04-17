@@ -1,18 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
-import ReactDOM from 'react-dom';
 import Typed from 'typed.js';
 
 //Resources
-import {Info, Twitter, Globe, X, RefreshCcw} from 'react-feather';
+import { Layout, Info, Twitter, Globe, RefreshCcw, X } from 'react-feather';
 import Adjectives from '../data/adjectives.js';
 
 class Meta extends Component {
 	render() {
-		let name = 'Compliment Generator';
-		let description = "Can't think of something nice to say? We can come up with it for you";
+		let name = 'Apprecio';
+		let description = 'When you need some inspiration to find the right words.';
 		let image = '';
-		let url = '';
+		let url = 'https://www.apprecio.life';
 		return (
 			<Helmet>
 				<title>{name}</title>
@@ -36,49 +35,56 @@ class Meta extends Component {
 }
 
 export class Home extends Component {
-	generateNum() {
-		let sumWords = Adjectives.length;
-		let word = Math.floor(Math.random() * Math.floor(sumWords));
-		let adjective = Adjectives[word];
+	constructor() {
+		super();
 
-		return (adjective);
+		this.state = {
+			adjective: '',
+		};
+
+		this.getRandomAdjective = this.getRandomAdjective.bind(this);
+		this.newWord = this.newWord.bind(this);
+		this.setTypedWord = this.setTypedWord.bind(this);
 	}
 
+	getRandomAdjective() {
+		const sumWords = Adjectives.length;
+		const index = Math.floor(Math.random() * Math.floor(sumWords));
+		const adjective = Adjectives[index].toLowerCase();
+		this.setState({
+			adjective,
+		});
+		return adjective;
+	}
+
+	setTypedWord(typeSpeed, backSpeed) {
+    const options = {
+      strings: [this.getRandomAdjective()],
+      typeSpeed,
+      backSpeed,
+      fadeOut: true,
+      showCursor: false,
+      // loop: true
+    };
+
+    this.typed = new Typed(this.el, options);
+  }
+
 	componentDidMount() {
-		let words = this.generateNum();
-
-		const options = {
-			strings: [words],
-			typeSpeed: 50,
-			backspeed: 80,
-			fadeOut: true,
-			showCursor: false,
-			// loop: true
-		};
-
-		this.typed = new Typed(this.el, options);			
+		this.setTypedWord(50, 80);
 	};
 
-	newWord(adjective) {
-		let words = adjective;
-
-		const options = {
-			strings: [words],
-			typeSpeed: 80,
-			backspeed: 80,
-			fadeOut: true,
-			showCursor: false,
-			// loop: true
-		};
-
-		this.typed = new Typed(this.el, options);
+	newWord() {
+		this.setTypedWord(80, 80);
 	}
 
 	render() {
 		return (
 			<Fragment>
-				<h1>I think you're <span ref={(el) => {this.el = el;}} id="adjective"></span></h1>
-				<button className="refresh" onClick={() => this.newWord(this.generateNum())}>{<RefreshCcw />}</button>
+        <h1>I think you are <span ref={(el) => {this.el = el;}} id="adjective" />
+					&nbsp;&nbsp;
+          <button className="refresh" onClick={() => this.newWord()}>{<RefreshCcw />}</button>
+				</h1>
 				<About />
 			</Fragment>
 		);
@@ -92,29 +98,42 @@ const About = () => (
 		</a>
 		<div id="about">
 			<a href="#" className="close"><X /></a>
-			<h2>About this project</h2>
-			<p>This seems pretty cool, and we can put text here about stuff</p>
-			<p>This is based off the list of words at <a href="http://ideonomy.mit.edu/essays/traits.html" target="_blank" rel="nofollow">http://ideonomy.mit.edu/essays/traits</a> but a couple of the words might need removing.</p>
-			<h2>About Sander</h2>
-			<p>Sander lives in Perth and loves swing dancing and software development</p>
+			<h3>About Apprecio</h3>
 			<p>
-				<a href="https://twitter.com/ahuijsen" target="_blank" rel="nofollow">
-					<Twitter />
-				</a>
-				<a href="http://sanderhuijsen.com/" target="_blank" rel="nofollow">
-					<Globe />
-				</a>
+				Appreciating someone is an act of kindness. We appreciate others for their positive personal traits, and we should
+				all do more of it. But sometimes, it's hard to find the right word. Apprecio aims to help you with that. A source
+				of inspiration to consult when you're looking for that one word with which you can best appreciate your friend,
+				partner, parent, or colleague.
+				<br/><br/>
+				Every time you load the site, you will be shown a new positive trait, something that you may appreciate in
+				your friend. Not the word you're looking for? Simply click the refresh icon, and you will be presented with
+				a new word.
+				<br/><br/>
+				Be inspired. Share your appreciation. Make the world a slightly better place.
 			</p>
-			<h2>About Amy</h2>
-			<p>Amy is a freelance front end developer, starting her own business and working as an Evangalist for YOW! Conference.</p>
-			<p>She enjoys spending her time in the community, speaking at events and blogs in her spare time (about tech, the web and life).</p>
+			<h3>About Sander</h3>
 			<p>
-				<a href="https://twitter.com/Amys_Kapers" target="_blank" rel="nofollow">
-					<Twitter />
-				</a>
-				<a href="https://amygoestoperth.com.au/" target="_blank" rel="nofollow">
-					<Globe />
-				</a>
+				Apprecio is a project developed by Sander Huijsen. Sander is Time to Think Facilitator (in practicum) who lives
+				in Perth, Australia. In his work, he noticed that our everyday vocabulary seems to be biased toward the negative.
+				Apprecio is his attempt to change that.
+			</p>
+			<h3>Contact Sander</h3>
+			<p>
+				<span id="icon"><Twitter /></span>
+				&nbsp;&nbsp;
+				<a href="https://twitter.com/ahuijsen" target="_blank" rel="nofollow">@ahuijsen</a>
+			</p>
+			<p>
+				<span id="icon"><Globe /></span>
+				&nbsp;&nbsp;
+				<a href="https://sanderhuijsen.com/" target="_blank" rel="nofollow">sanderhuijsen.com</a>
+			</p>
+			<p>&nbsp;</p>
+			<h3>Design</h3>
+			<p id="design">
+				<span id="icon"><Layout /></span>
+				&nbsp;&nbsp;
+				Web design by <a href="https://amygoestoperth.com.au" target="_blank" rel="nofollow">Amy Kapernick</a>.
 			</p>
 		</div>
 	</div>
