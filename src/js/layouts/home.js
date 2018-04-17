@@ -150,8 +150,7 @@ class Share extends Component {
       let url = "https://twitter.com/messages/compose?text=Hey%20" + name + ",%20I%20think%20you%20are%20";
       let urlWord = word.replace(' ', '%20');
       articleLink = url + urlWord;
-    }
-    else if (provider === 'sms') {
+    } else if (provider === 'sms') {
       let url = "sms:" + number + "?body=Hey " + name + "I think you are ";
       articleLink = url + word;
     }
