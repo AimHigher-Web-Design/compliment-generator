@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Typed from 'typed.js';
 
 //Resources
-import {Info, Twitter, Globe, X, RefreshCcw} from 'react-feather';
+import {Info, Twitter, Globe, X, RefreshCcw, MessageSquare, Share2} from 'react-feather';
 import Adjectives from '../data/adjectives.js';
 
 class Meta extends Component {
@@ -36,11 +36,19 @@ class Meta extends Component {
 }
 
 export class Home extends Component {
+	constructor() {
+		super();
+		this.state = {
+		  word: ''
+		};
+	};
+
 	generateNum() {
 		let sumWords = Adjectives.length;
 		let word = Math.floor(Math.random() * Math.floor(sumWords));
 		let adjective = Adjectives[word];
 
+		this.setState({word: adjective});
 		return (adjective);
 	}
 
@@ -68,15 +76,15 @@ export class Home extends Component {
 			backspeed: 80,
 			fadeOut: true,
 			showCursor: false,
-			// loop: true
 		};
 
 		this.typed = new Typed(this.el, options);
-	}
+	};
 
 	render() {
 		return (
 			<Fragment>
+				<Share word={this.state.word} />
 				<h1>I think you're <span ref={(el) => {this.el = el;}} id="adjective"></span></h1>
 				<button className="refresh" onClick={() => this.newWord(this.generateNum())}>{<RefreshCcw />}</button>
 				<About />
@@ -119,3 +127,44 @@ const About = () => (
 		</div>
 	</div>
 );
+
+class Share extends Component {
+	shareLinks(word) {
+		let name = document.getElementById('name').value;
+		let number = document.getElementById('number').value;
+		let provider = document.querySelector('input[name="provider"]:checked').value;
+		let articleLink = '';
+
+		if(provider == 'twitter') {
+			let url = "https://twitter.com/messages/compose?text=Hey%20" + name + ",%20I%20think%20you're%20";
+			let urlWord = word.replace(' ', '%20');
+			articleLink = url + urlWord;
+		}
+		else if(provider = 'sms') {
+			let url = "sms:" + number + "?body=Hey " + name + "I think you're ";
+			articleLink = url + word;
+		}
+
+		window.open(articleLink, '_blank');
+	};
+
+	render() {
+		return (
+			<Fragment>
+				<div className="share icons">
+					<a href="#share"><Share2 /></a>
+				</div>
+				<div id="share" className="share-modal">
+					<a href="#" className="close"><X /></a>
+					<div className="icons">
+						<label><input type="radio" name="provider" value="twitter" /><Twitter /></label>
+						<label><input type="radio" name="provider" value="sms" /><MessageSquare /></label>
+					</div>
+					<input id="name" type="text" placeholder="Their name" />
+					<input id="number" type="text" placeholder="Their number" />
+					<button type="button" onClick={() => this.shareLinks(this.props.word)}>Send them some love</button>
+				</div>
+			</Fragment>
+		);
+	};
+};

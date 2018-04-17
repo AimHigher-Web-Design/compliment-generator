@@ -35,7 +35,7 @@ button, .btn {
     color: $grey;
     cursor: pointer;
     display: inline-block;
-    font-size: 3em;
+    font-size: 1em;
     padding: 10px 20px;
 
     &:active, &:hover, &:focus {
@@ -82,7 +82,7 @@ img {
 
 .refresh {
     svg {
-        --size: 1em;
+        --size: 2em;
         height: var(--size);
         width: var(--size);
 
@@ -111,6 +111,65 @@ img {
                 transform: rotate(-360deg);
             }
         }
+    }
+}
+
+.share {
+    position: absolute;
+        top: 20px;
+        right: 20px;
+}
+
+.icons {
+    display: flex;
+        justify-content: space-between;
+    padding: 5px 20px;
+
+    svg {
+        margin: 20px;
+    }
+}
+
+.share-modal {
+    background: $grey_light_10;
+    border: 2px solid $grey;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    position: absolute;
+        top: 30px;
+        right: 20px;
+
+    &:target {
+        display: flex;
+    }
+
+    .close {
+        position: absolute;
+            top: 20px;
+            right: 20px;
+    }
+
+    input[type="text"] {
+        font-size: 1em;
+        line-height: 1.5;
+        margin: 10px 0;
+        padding: 5px 15px;
+    }
+
+    input[type="radio"] {
+        opacity: 0;
+
+        &:checked {
+            ~ svg {
+                color: $blue;
+            }
+        }
+    }
+
+    button {
+        border: 1.5px solid $grey;
+        margin-top: 20px;
     }
 }
 
