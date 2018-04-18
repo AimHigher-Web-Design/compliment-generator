@@ -94,7 +94,7 @@ export class Home extends Component {
 }
 
 const About = () => (
-	<div className="about">
+	<div className="about icons">
 		<a href="#about" title="Link to display the information page">
 			<Info />
 		</a>
