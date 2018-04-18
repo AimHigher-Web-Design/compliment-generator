@@ -1,13 +1,14 @@
 //Fonts
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
-$font_regular: 400 1em 'Lato', Arial, sans-serif;
-$font_bold: 700 1em 'Lato', Arial, sans-serif;
-$font_headings: 700 1.5em 'Lato', Arial, sans-serif;
+$font_regular: 400 1.6em/1.8 'Lato', Arial, sans-serif;
+$font_bold: 700 1.6em/1.8 'Lato', Arial, sans-serif;
+$font_headings: 700 2em/1.2 'Lato', Arial, sans-serif;
 
 //Colours
 $pink: #FFBEEF;
 $purple: #E3C2FF;
+$purple_dark: #6900c2;
 $green: #CFFFDB;
 $yellow: #FFFCB2;
 $blue: #B5E8FF;

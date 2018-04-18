@@ -1,14 +1,12 @@
 @import '../variables.scss';
 
 body {
-  --colour: #{$purple};
+  --colour: #{$purple_dark};
   --background: #{$cream};
 
   background: var(--background);
   color: $grey;
   font: $font_regular;
-  font-size: 1.6em;
-  line-height: 1.8;
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
@@ -18,7 +16,8 @@ body {
 
 h1 {
   font: $font_headings;
-  font-size: 4em;
+  font-size: 3.8em;
+  text-align: center;
 }
 
 h3 {
@@ -30,8 +29,13 @@ a {
   color: $grey;
 
   &:active, &:hover, &:focus {
-    font: $font_bold;
+    color: var(--colour);
+    text-decoration: none;
   }
+}
+
+small {
+  font-size: 0.7em;
 }
 
 button, .btn {
@@ -170,7 +174,7 @@ img {
 
         &:checked {
             ~ svg {
-                color: $blue;
+                color: var(--colour);
             }
         }
     }
@@ -182,26 +186,29 @@ img {
 }
 
 .about {
-  font-size: 1.7em;
   position: absolute;
-  right: 0;
-  bottom: 0;
+    right: 0;
+    bottom: 0;
 
   #about {
     background: $grey_light_10;
     border: 2px solid $grey;
     display: none;
+    font-size: 0.6em;
     height: 50vh;
     overflow-y: scroll;
     padding: 40px;
     position: fixed;
-    top: 20vh;
-    left: 25vw;
-    width: 50vw;
-
+      top: 20vh;
+      left: 25vw;
+      width: 50vw;
 
     &:target {
       display: block;
+    }
+
+    h3 {
+      margin: 15px 0;
     }
 
     .close {
@@ -209,30 +216,28 @@ img {
       top: 20px;
       right: 20px;
     }
-  }
-}
 
-#design {
-  font-size: 0.8em;
-  margin-top: -10px;
-}
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
 
-#icon {
-  position: relative;
-  top: 5px;
-}
+      li {
+        display: flex;
+          align-items: center;
+        padding: 10px 0;
+      }
+    }
 
-#glyph {
-  color: #{$grey_light_90};
-  font-size: 0.7em;
-
-  &:focus {
-    color: #{$grey_light_50}
-  }
-  &:hover {
-    color: #{$grey_light_75}
-  }
-  &:active {
-    color: #{$grey_dark_75}
+    .icons {
+      display: inline-block;
+      font-size: 24px;
+      line-height: 1;
+      padding: 0;
+      
+      svg {
+        margin: 0 10px 0 0px;
+      }
+    }
   }
 }

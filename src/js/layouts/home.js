@@ -83,7 +83,6 @@ export class Home extends Component {
 			<Fragment>
         <Share word={this.state.word} />
         <h1>I think you are <span ref={(el) => {this.el = el;}} id="adjective" />
-					&nbsp;&nbsp;
           <button className="refresh" onClick={() => this.newWord()}>{<RefreshCcw />}</button>
 				</h1>
 				<About />
@@ -119,23 +118,23 @@ const About = () => (
 				Apprecio is his attempt to change that.
 			</p>
 			<h3>Contact Sander</h3>
-			<p>
-				<span id="icon"><Twitter /></span>
-				&nbsp;&nbsp;
-				<a href="https://twitter.com/ahuijsen" target="_blank" rel="nofollow">@ahuijsen</a>
-			</p>
-			<p>
-				<span id="icon"><Globe /></span>
-				&nbsp;&nbsp;
-				<a href="https://sanderhuijsen.com/" target="_blank" rel="nofollow">sanderhuijsen.com</a>
-			</p>
-			<p>&nbsp;</p>
+			<ul>
+				<li>
+					<span className="icons"><Twitter /></span>
+					<a href="https://twitter.com/ahuijsen" target="_blank" rel="nofollow">@ahuijsen</a>
+				</li>
+				<li>
+					<span className="icons"><Globe /></span>
+					<a href="https://sanderhuijsen.com/" target="_blank" rel="nofollow">sanderhuijsen.com</a>
+				</li>
+			</ul>
 			<h3>Design</h3>
-			<p id="design">
-				<span id="icon"><Layout /></span>
-				&nbsp;&nbsp;
-				Web design by <a href="https://amygoestoperth.com.au" target="_blank" rel="nofollow">Amy Kapernick</a>.
-			</p>
+			<ul>
+				<li>
+					<span className="icons"><Layout /></span>
+					<small>Web design by <a href="https://amygoestoperth.com.au" target="_blank" rel="nofollow">Amy Kapernick</a></small>
+				</li>
+			</ul>
 		</div>
 	</div>
 );
